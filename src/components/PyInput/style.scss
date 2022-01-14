@@ -1,0 +1,63 @@
+.custom-input {
+  border-radius: 0.25rem;
+
+  @apply border
+		border-solid
+		border-gray-300
+		bg-transparent
+    text-base
+    px-3
+		font-normal
+		transition-all
+		duration-200
+		w-full;
+
+  &:focus {
+    outline: none;
+    box-shadow: none;
+    border-color: var(--py-color);
+  }
+
+  &.borderless {
+    @apply border-transparent;
+  }
+
+  &.error {
+    @apply border-red-600;
+  }
+}
+
+.py-input {
+  @apply relative;
+
+  span {
+    &.hint {
+      font-size: 11px;
+      line-height: 13px;
+
+      @apply font-normal block pt-1.5 text-gray-600;
+    }
+
+    &.error-message {
+      @apply text-red-600;
+    }
+  }
+
+  &-content { 
+    .header {
+      @apply flex justify-between items-center;
+      .title {
+        @apply block text-sm font-normal text-gray-900 my-2;
+      }
+	  .optional{
+		@apply text-red-600 text-sm
+	  }
+    }
+    .icon {
+      @apply absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none;
+    }
+    .custom-input {
+      @apply flex-1;
+    }
+  }
+}

@@ -1,0 +1,88 @@
+.pyTextfield {
+  @apply w-full;
+
+  &__label {
+    @apply text-sm leading-4 text-zinc-900 block pb-1.5;
+  }
+
+  &__top {
+    @apply relative w-full;
+  }
+
+  &__before, &__after {
+    position: absolute;
+    top: 50%;
+  }
+
+  &__before {
+    transform: translate(calc(-100% - .75rem), -50%);
+    left: 0;
+  }
+
+  &__after {
+    transform: translate(calc(100% + .75rem), -50%);
+    right: 0;
+  }
+
+  &__content {
+    @apply flex items-center px-3 border-solid border-2 border-gray-900 rounded transition-all duration-200;
+
+    &.error, &.error:hover {
+      @apply border-red-400;
+    }
+
+    &.not-allowed, &.not-allowed:hover {
+      @apply border-gray-300 bg-zinc-100 cursor-not-allowed;
+    }
+
+    &--prepend, &--append {
+      @apply flex-none;
+
+      &:empty {
+        @apply hidden;
+      }
+    }
+
+    &--prepend {
+      @apply pl-1 pr-4;
+    }
+
+    &--append {
+      @apply pr-1 pl-4;
+    }
+
+    &--field {
+      @apply h-full flex-1;
+
+      textarea, input {
+        @apply h-full bg-transparent w-full text-base leading-5 resize-none text-zinc-900;
+
+        &:focus {
+          border: none;
+          box-shadow: none;
+          outline: none;
+        }
+
+        &:read-only, &:disabled {
+          @apply cursor-not-allowed;
+        }
+      }
+    }
+  }
+
+  &__bottom {
+    @apply flex items-center;
+
+    &:deep(span) {
+      @apply block text-neutral-600 pt-1.5;
+
+      font-size: 11px;
+      line-height: 13px;
+      font-weight: 400;
+    }
+
+    &:deep(span.error-message) {
+      @apply text-red-600;
+    }
+  }
+}

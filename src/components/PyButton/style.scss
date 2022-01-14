@@ -1,0 +1,45 @@
+.py-btn {
+     @apply
+        flex
+        items-center
+        justify-center
+        relative
+        w-max
+        rounded-md
+        overflow-hidden
+        transition
+        duration-200
+        ease-in-out        
+        focus:outline-none      
+        focus:shadow-none;
+ 
+    .overlay {
+        @apply
+            absolute
+            top-0
+            left-0
+            w-full
+            h-full
+            transition-all
+            duration-200
+            opacity-0;
+    }
+    
+    &:disabled {
+        @apply cursor-not-allowed;
+
+        .overlay {
+            @apply opacity-40;
+        }
+
+        .icon, .label {
+            @apply static;
+        }
+    }
+
+    &:hover:not(:disabled) {
+        .overlay {
+            @apply opacity-30;
+        }
+    }
+}

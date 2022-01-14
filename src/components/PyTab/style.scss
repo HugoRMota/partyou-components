@@ -1,0 +1,64 @@
+.pyTab {
+    @apply py-6;
+
+    &__button {
+        @apply
+            flex
+            items-center
+            justify-center
+            w-max
+            py-2
+            px-8
+            transition-all
+            duration-200
+            cursor-pointer
+            rounded-md
+            text-gray-400
+            relative;
+
+        &::after {
+            content: attr(data-tab);
+            color: #27C2FF;
+            font-size: 17px;
+
+            @apply
+                invisible
+                inline-block
+                transition
+                duration-200
+                font-bold
+                absolute
+                left-1/2
+                top-1/2
+                transform
+                -translate-x-1/2
+                -translate-y-1/2;
+        }
+
+        &:hover {
+            color: #27C2FF;
+        }
+    
+        &.active {
+            @apply bg-white shadow-lg;
+
+            &::after {
+                @apply visible;
+            }
+    
+            span {
+                @apply invisible;
+            }
+        }
+    
+        span {
+            font-size: 17px;
+
+            @apply
+                visible
+                inline-block
+                font-medium;
+        }
+    }
+
+}

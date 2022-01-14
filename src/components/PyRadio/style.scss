@@ -1,0 +1,46 @@
+.pyRadio {
+	@apply flex items-center max-w-full;
+
+	&.invert {
+		.pyRadio {
+			&__input {
+				@apply mr-0 ml-2 order-2;
+			}
+
+			&__label {
+				@apply order-1;
+			}
+		}
+	}
+
+	&__input {
+		&.checked {
+			.dot {
+				transform: scale(1);
+			}
+		}
+
+		.outline {
+			@apply transition-all duration-200;
+		}
+
+		.dot {
+			@apply transition-all duration-200;
+
+			transform: scale(0);
+			transform-origin: center;
+		}
+	}
+
+	&__label {
+		@apply flex-1;
+	}
+
+	label {
+		@apply cursor-pointer;
+	}
+
+	input {
+		@apply hidden;
+	}
+}
