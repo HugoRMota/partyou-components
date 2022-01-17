@@ -1,10 +1,14 @@
 import PyButton from '../components/PyButton/PyButton.vue';
+import { withDesign } from "storybook-addon-designs";
+
 //  require("../assets/main.css")
 
 // More on default export: https://storybook.js.org/docs/vue/writing-stories/introduction#default-export
 export default {
-  title: 'Example/PyButton',
+  title: "Example/PyButton",
   component: PyButton,
+  decorators: [withDesign],
+
   // More on argTypes: https://storybook.js.org/docs/vue/api/argtypes
   // argTypes: {
   //   backgroundColor: { control: 'color' },
@@ -32,8 +36,15 @@ export const Primary = Template.bind({});
 // More on args: https://storybook.js.org/docs/vue/writing-stories/args
 Primary.args = {
   // primary: true,
-  label: 'Click aqui',
-  color:"blue-600"
+  label: "Click aqui",
+  color: "blue-600",
+};
+
+Primary.parameters = {
+  design: {
+    type: "figma",
+    url: "https://www.figma.com/file/Bdiqw929OgxeQt0y8tU6Wj/Partyou---Design?node-id=486%3A633",
+  },
 };
 
 // export const Secondary = Template.bind({});

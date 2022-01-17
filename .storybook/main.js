@@ -6,6 +6,7 @@ module.exports = {
     "@storybook/addon-actions",
     "@storybook/addon-links",
     "@storybook/addon-essentials",
+    "storybook-addon-designs",
     {
       name: "@storybook/preset-scss",
       options: {
@@ -38,20 +39,24 @@ module.exports = {
         },
       },
     },
-   ],
+  ],
   webpackFinal: async (config, { configType }) => {
     config.module.rules.push({
       test: /\.scss$/,
-      use: ["style-loader", "css-loader",  "postcss-loader",  {
-        loader: 'sass-loader',
-        options: {
-          sassOptions: {
-            indentedSyntax: false
-          }
-        }
-      }],
+      use: [
+        "style-loader",
+        "css-loader",
+        "postcss-loader",
+        {
+          loader: "sass-loader",
+          options: {
+            sassOptions: {
+              indentedSyntax: false,
+            },
+          },
+        },
+      ],
       include: path.resolve(__dirname, "../"),
-      
     }); // Return the altered config
 
     config.resolve.alias = {
