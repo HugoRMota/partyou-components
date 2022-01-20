@@ -40,6 +40,7 @@ import pyTextfield from "../src/components/PyTextfield/PyTextfield.vue"
 import pySelect from "../src/components/PySelect/PySelect.vue"
 import pySwiper from "../src/components/PySwiper/PySwiper.vue"
 import pySwiperSlide from "../src/components/PySwiper/PySwiperSlide.vue"
+  
 
 export default {
   components: {
@@ -52,13 +53,14 @@ export default {
   },
   data(){
     return{
-      swiperImages: [0,1,2,3,4]
-    }
+      swiperImages: [0,1,2,3,4],
+     }
   },
 
   mounted() {
     const body = document.querySelector("body");
     body.style.setProperty("--py-color", "#5056F1");
+  
   },
 
 };

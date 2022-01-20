@@ -1,23 +1,39 @@
 {
-  "name": "partyou-componentes-vite",
-  "version": "0.0.0",
+  "name": "partyou-components-v2",
+  "version": "0.0.9",
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/py-lib.umd.js",
+  "module": "./dist/py-lib.es.js",
+  "exports": {
+    ".": {
+      "import": "./dist/py-lib.es.js",
+      "require": "./dist/py-lib.umd.js"
+    },
+    "./styles": "./dist/style.css"
+  },
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "build-storybook-docs": "build-storybook --docs"
+    "build-storybook-docs": "build-storybook --docs",
+    "chromatic": "npx chromatic --project-token=37b985f7d11a",
+    "style": "tailwindcss build src/assets/main.css -o src/assets/tailwind.css"
   },
   "dependencies": {
-    "@tailwindcss/forms": "^0.4.0",
-    "swiper": "^7.4.1",
-    "v-mask": "^2.3.0",
     "vue": "^3.2.25",
     "vue-i18n": "^8.26.8",
+    "vue-router": "^4.0.12",
     "vue3-click-away": "^1.2.1"
   },
   "devDependencies": {
+    "swiper": "^7.4.1",
+    "v-mask": "^2.3.0",
+    "tailwindcss": "^3.0.9",
+    "@tailwindcss/forms": "^0.4.0",
     "@babel/core": "^7.16.7",
     "@storybook/addon-actions": "^6.5.0-alpha.7",
     "@storybook/addon-essentials": "^6.5.0-alpha.7",
@@ -42,7 +58,6 @@
     "storybook-addon-designs": "^6.2.1",
     "storybook-addon-sass-postcss": "^0.1.0",
     "style-loader": "^3.3.1",
-    "tailwindcss": "^3.0.9",
     "vite": "^2.7.2",
     "vue-loader": "^16.8.3",
     "vue-style-loader": "^4.1.3",

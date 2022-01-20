@@ -1,49 +1,21 @@
 <template>
-  <router-link
-    v-if="to"
-    :to="to"
+  <component
+    :is="tag.type"
     :class="classList"
     :style="style"
     class="py-btn"
-  >
-    <span class="overlay" :class="`bg-${overlayColor}`"></span>
-    <slot>
-      <span class="label">{{ label }}</span>
-    </slot>
-  </router-link>
-  <a
-    v-else-if="href"
-    target="_blank"
-    :class="classList"
-    :style="style"
-    class="py-btn"
-  >
-    <span class="overlay" :class="`bg-${overlayColor}`"></span>
-    <slot>
-      <span class="label">{{ label }}</span>
-    </slot>
-  </a>
-  <button
-    v-else
-    :class="classList"
-    :style="style"
-    :type="type"
-    class="py-btn"
-    @click="onClick"
-    :disabled="disabled"
+    v-bind="tag.args"
   >
     <!-- <span class="overlay" :class="`bg-${overlayColor}`"></span> -->
-   
-    
+
     <slot>
       <span class="label">{{ label }}</span>
     </slot>
-  </button>
+  </component>
 </template>
 
 <script>
-import { computed, watch, ref, onMounted } from "vue";
-// import "./style.scss"
+import { computed, watch, ref} from "vue";
 
 export default {
   name: "py-button",
@@ -101,6 +73,18 @@ export default {
     type: {
       type: String,
       default: "button",
+      validator: (value) =>
+        ["button", "submit", "reset"].includes(value.toLowerCase()),
+    },
+
+    to: {
+      default: null,
+      type: String,
+    },
+
+    href: {
+      default: null,
+      type: String,
     },
 
     disabled: {
@@ -110,8 +94,22 @@ export default {
   },
 
   setup(props, { attrs, emit }) {
-    const { to, href } = attrs;
-    let color ;
+    let tag = {};
+
+    if (props.to) {
+      tag.type = "router-link";
+      tag.args = { to: props.to };
+    } else if (props.href) {
+      tag.type = "a";
+      tag.args = { href: props.href, target: "_blank" };
+    } else {
+      tag.type = "button";
+      tag.args = {
+        type: props.type,
+        disabled: props.disabled,
+        onClick: () => emit("on-click"),
+      };
+    }
 
     const setStyles = () => ({
       width: props.fullWidth ? "100%" : `${props.width}px`,
@@ -126,70 +124,66 @@ export default {
       `bg-${props.color}`,
       `font-${props.weight}`,
       `hover:text-${props.hoverTextColor || props.textColor}`,
-      `hover:bg-${hoverColor(props.color)}`
+      `hover:bg-${hoverColor(props.color)}`,
     ];
 
-    function hoverColor(hex){
-        if(hex == 'primary'){ 
-
-          // console.log("COLOR", color)
-          // const value = getComputedStyle(document.documentElement).getPropertyValue('--py-color');
-          // console.log("🚀 ~ file: PyButton.vue ~ line 133 ~ hoverColor ~ value", value) 
-       }else{
-          let color;
-          if(parseInt(hex.split("-")[1]) == 900){ 
-              color = `${hex.split("-")[0]}-${parseInt(hex.split("-")[1]) - 100}`;
-          }else{
-              color = `${hex.split("-")[0]}-${parseInt(hex.split("-")[1]) + 100}`;
-          }
-          return color
+    function hoverColor(hex) {
+      if (hex == "primary") {
+        // console.log("COLOR", color)
+        // const value = getComputedStyle(document.documentElement).getPropertyValue('--py-color');
+        // console.log("🚀 ~ file: PyButton.vue ~ line 133 ~ hoverColor ~ value", value)
+      } else {
+        let color;
+        if (parseInt(hex.split("-")[1]) == 900) {
+          color = `${hex.split("-")[0]}-${parseInt(hex.split("-")[1]) - 100}`;
+        } else {
+          color = `${hex.split("-")[0]}-${parseInt(hex.split("-")[1]) + 100}`;
+        }
+        return color;
       }
-    };
-    
+    }
+
     // console.log(hexToRGB("#5056F1"));
 
     function hexToRGB(h) {
-        let r = 0, g = 0, b = 0;
-  
-        if (h.length == 4) {
-          r = "0x" + h[1] + h[1];
-          g = "0x" + h[2] + h[2];
-          b = "0x" + h[3] + h[3];
+      let r = 0,
+        g = 0,
+        b = 0;
+
+      if (h.length == 4) {
+        r = "0x" + h[1] + h[1];
+        g = "0x" + h[2] + h[2];
+        b = "0x" + h[3] + h[3];
 
         // 6 digits
-        } else if (h.length == 7) {
-          r = "0x" + h[1] + h[2];
-          g = "0x" + h[3] + h[4];
-          b = "0x" + h[5] + h[6];
-        }
-  
-         return "rgb("+ +r + "," + +g + "," + +b + ")";
-    };
- 
- 
+      } else if (h.length == 7) {
+        r = "0x" + h[1] + h[2];
+        g = "0x" + h[3] + h[4];
+        b = "0x" + h[5] + h[6];
+      }
+
+      return "rgb(" + +r + "," + +g + "," + +b + ")";
+    }
+
     const classes = ref(setClasses());
     const style = ref(setStyles());
- 
-   
 
     watch(props, () => {
       classes.value = setClasses();
       style.value = setStyles();
     });
-   
+
     const classList = computed(() => classes.value.join(" "));
-  
+
     return {
       style,
       classList,
-      to,
-      href,
-      onClick: () => emit("on-click"),
+      tag,
     };
   },
 };
 </script>
 
 <style lang="scss" scoped>
- @import "./style.scss"
+@import "./style.scss";
 </style>

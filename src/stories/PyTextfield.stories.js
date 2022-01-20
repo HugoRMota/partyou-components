@@ -31,13 +31,14 @@ export const Primary = Template.bind({});
 // More on args: https://storybook.js.org/docs/vue/writing-stories/args
 Primary.args = {
   // primary: true,
-  label: 'Name',
+  label: "Name",
+  borderColor: "blue-500",
 };
 
-// export const Secondary = Template.bind({});
-// Secondary.args = {
-//   label: 'Button',
-// };
+export const Secondary = Template.bind({});
+Secondary.args = {
+  label: "Butão 2",
+};
 
 // export const Large = Template.bind({});
 // Large.args = {
