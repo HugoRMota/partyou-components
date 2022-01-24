@@ -3,7 +3,7 @@
     <pyInput label="Name" optional="*" />
     <pyButton color="green-500" label="Button" />
     <pyTextfield  label="Name" />
-    <pySelect label="Gender" :modelValue="1" :options="[
+    <pySelect @update:modelValue="selected = $event" label="Gender" :modelValue="selected" :options="[
   {
     label: '1',
     value: 1
@@ -54,7 +54,13 @@ export default {
   data(){
     return{
       swiperImages: [0,1,2,3,4],
+      selected: 1,
      }
+  },
+  methods:{
+    teste(val){
+      console.log("val", val);
+    }
   },
 
   mounted() {
