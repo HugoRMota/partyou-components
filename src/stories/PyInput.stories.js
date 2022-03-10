@@ -1,17 +1,16 @@
-import PyInput from '../components/PyInput/PyInput.vue';
- require("../assets/main.css")
+import PyInput from "../components/PyInput/PyInput.vue";
 
 // More on default export: https://storybook.js.org/docs/vue/writing-stories/introduction#default-export
 export default {
-  title: 'Example/PyInput',
+  title: "Example/PyInput",
   component: PyInput,
   // More on argTypes: https://storybook.js.org/docs/vue/api/argtypes
   argTypes: {
-    backgroundColor: { control: 'color' },
+    backgroundColor: { control: "color" },
     onClick: {},
     size: {
-      control: { type: 'select' },
-      options: ['small', 'medium', 'large'],
+      control: { type: "select" },
+      options: ["small", "medium", "large"],
     },
   },
 };
@@ -32,7 +31,7 @@ export const Primary = Template.bind({});
 // More on args: https://storybook.js.org/docs/vue/writing-stories/args
 Primary.args = {
   primary: true,
-  label: 'Button',
+  label: "Button",
 };
 
 // export const Secondary = Template.bind({});
