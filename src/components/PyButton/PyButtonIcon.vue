@@ -47,6 +47,7 @@
 
 <script>
 import { watch, computed, ref } from 'vue'
+import PyIcon from '../PyIcon'
 
 export default {
     name: 'py-button-icon',
@@ -61,6 +62,10 @@ export default {
         icon: { type: String, default: '' },
         type: { type: String, default: 'button' },
         disabled: { type: Boolean, default: false }
+    },
+
+    components:{
+        PyIcon
     },
 
     setup (props, { attrs, emit }) {

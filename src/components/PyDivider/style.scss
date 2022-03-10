@@ -1,0 +1,11 @@
+.divider {
+    @apply flex-shrink-0 border-none;
+
+    &__horizontal {
+        @apply block h-px;
+    }
+    
+    &__vertical {
+        @apply self-stretch h-auto w-px;
+    }
+}

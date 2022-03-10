@@ -1,6 +1,6 @@
 {
   "name": "partyou-components-v2",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "files": [
     "dist"
   ],
@@ -24,16 +24,13 @@
     "style": "tailwindcss build src/assets/main.css -o src/assets/tailwind.css"
   },
   "dependencies": {
+    "date-fns": "^2.28.0",
     "vue": "^3.2.25",
-    "vue-i18n": "^8.26.8",
+    "vue-i18n": "^9.1.6",
     "vue-router": "^4.0.12",
     "vue3-click-away": "^1.2.1"
   },
   "devDependencies": {
-    "swiper": "^7.4.1",
-    "v-mask": "^2.3.0",
-    "tailwindcss": "^3.0.9",
-    "@tailwindcss/forms": "^0.4.0",
     "@babel/core": "^7.16.7",
     "@storybook/addon-actions": "^6.5.0-alpha.7",
     "@storybook/addon-essentials": "^6.5.0-alpha.7",
@@ -43,6 +40,7 @@
     "@storybook/manager-webpack5": "^6.5.0-alpha.7",
     "@storybook/preset-scss": "^1.0.3",
     "@storybook/vue3": "^6.5.0-alpha.7",
+    "@tailwindcss/forms": "^0.4.0",
     "@vitejs/plugin-vue": "^2.0.0",
     "autoprefixer": "^10.4.1",
     "babel-loader": "^8.2.3",
@@ -58,6 +56,9 @@
     "storybook-addon-designs": "^6.2.1",
     "storybook-addon-sass-postcss": "^0.1.0",
     "style-loader": "^3.3.1",
+    "swiper": "^7.4.1",
+    "tailwindcss": "^3.0.9",
+    "v-mask": "^2.3.0",
     "vite": "^2.7.2",
     "vue-loader": "^16.8.3",
     "vue-style-loader": "^4.1.3",

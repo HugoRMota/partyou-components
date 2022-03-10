@@ -1,0 +1,62 @@
+.py-modal {
+	@apply
+		flex
+		transition-all
+		duration-300
+		justify-center
+		content-center
+		h-screen
+		w-screen
+		fixed
+		top-0
+		left-0
+		bg-white
+		bg-opacity-75
+		z-10
+		 ;
+	.py-modal-content {
+		max-height: calc(100vh - 3rem);
+		max-width: calc(100% - 3rem);
+		transform: translate(-50%, -50%);
+		
+		@apply
+			absolute
+			bg-white
+			box-border
+			shadow-2xl
+			rounded
+			border
+			py-16
+			px-16
+			overflow-y-auto
+			top-1/2
+			left-1/2
+		;
+
+		&.fullScreen {
+			@apply
+				max-h-screen
+				h-screen
+				w-full
+				h-full
+				border-0
+				rounded-none
+				;
+		}
+		
+		&--close {
+			@apply
+				 absolute
+				 top-5
+				 right-9
+				 text-2xl
+				 cursor-pointer
+				 ;
+			
+			&:hover {
+				color: rgb(69, 57, 240);
+			}
+		}
+	}
+
+}

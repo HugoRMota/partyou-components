@@ -96,9 +96,14 @@
 
 <script>
 import { computed, ref, watch } from "vue";
+import { PyIcon } from "../../components";
 
 export default {
   name: "py-textfield",
+
+  components:{
+    PyIcon
+  },
 
   emit: ["update:modelValue", "on-clear", "on-focus-in", "on-focus-out"],
 

@@ -32,6 +32,7 @@
 </template>
 
 <script>
+import * as item from "./components/index"
 // This starter template is using Vue 3 <script setup> SFCs
 // Check out https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup
 import pyInput from "../src/components/PyInput/PyInput.vue";
@@ -64,6 +65,7 @@ export default {
   },
 
   mounted() {
+    console.log("ITEM", item)
     const body = document.querySelector("body");
     body.style.setProperty("--py-color", "#5056F1");
   

@@ -4,8 +4,10 @@ import Buttons from "./PyButton";
 import Swiper from "./PySwiper";
 import Collapse from "./PyCollapse";
 
+
+
 const { PyDropdown, PyDropdownContent, PyDropdownItem } = Dropdown;
-const { PyButton, PyButtonIcon, PyButtonGradient, teste } = Buttons;
+const { PyButton, PyButtonIcon, PyButtonGradient } = Buttons;
 const { PySwiper, PySwiperSlide } = Swiper;
 const { PyCollapse, PyCollapseContent } = Collapse;
 
@@ -13,7 +15,6 @@ export {
   PyButton,
   PyButtonIcon,
   PyButtonGradient,
-  teste,
   PyDropdown,
   PyDropdownContent,
   PyDropdownItem,
@@ -34,3 +35,6 @@ export { default as PyLangSelector } from "./PyLangSelector";
 export { default as PyMeta } from "./PyMeta";
 export { default as PyIcon } from "./PyIcon";
 export { default as PyCard } from "./PyCard";
+
+export * from "../validation/validation-builder";
+export * from "../validation/validation-composite";

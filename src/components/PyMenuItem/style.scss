@@ -1,0 +1,72 @@
+.menuItem {
+	@apply relative;
+
+	&.dense {
+		.menuItem {
+			&__link {
+				@apply h-12 p-3;
+
+				&--icon {
+					@apply w-3 h-3;
+				}
+			}
+		}
+	}
+
+	&__link {
+		@apply h-14
+            flex
+            relative
+            items-center
+            justify-start
+            no-underline
+            text-sm
+            py-4
+            px-6
+            gap-4
+            w-full
+            before:content-['']
+            before:absolute
+            before:top-0
+            before:left-0
+            before:w-full
+            before:h-full
+            before:opacity-0
+            before:invisible
+            before:transition-all
+            before:duration-200
+            hover:before:opacity-10
+            hover:before:visible;
+
+		&:hover {
+			.menuItem__link--icon {
+				@apply text-gray-900;
+			}
+		}
+
+		&--label {
+			@apply flex-1 line-clamp-1 text-gray-900 text-left;
+		}
+
+		&--icon {
+			@apply w-5
+                h-5
+                inline-flex
+                items-center
+                justify-center
+                text-gray-400
+                transition-all
+                duration-200;
+		}
+
+		&--append {
+			@apply flex-none pr-1;
+		}
+	}
+
+	&:hover {
+		.menuItem__submenu {
+			@apply block;
+		}
+	}
+}

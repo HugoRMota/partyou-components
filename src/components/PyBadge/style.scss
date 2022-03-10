@@ -1,0 +1,36 @@
+.badge {
+    @apply inline-flex items-center justify-end font-medium;
+
+    &__md {
+        height: 1.125rem;
+        border-radius: 9px;
+
+        @apply px-2 text-xs;
+    }
+
+    &__sm {
+        font-size: .625rem;
+
+        @apply h-3.5 px-1 leading-3 rounded-lg;
+    }
+
+    &__lg {
+        @apply text-sm leading-4 h-5 px-3 rounded-xl;
+    }
+
+    &__middle {
+        @apply align-middle;
+    }
+
+    &__top {
+        @apply align-top;
+    }
+
+    &__bottom {
+        @apply align-bottom;
+    }
+
+    &__float {
+        @apply absolute -top-1 -right-1;
+    }
+}

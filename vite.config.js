@@ -14,7 +14,7 @@ export default defineConfig({
   build: {
     lib: {
       entry: path.resolve(__dirname, "src/components/index.js"),
-      name: "PartyouComponents",
+      name: "PyComponents",
       fileName: (format) => `py-lib.${format}.js`,
     },
     rollupOptions: {
