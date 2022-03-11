@@ -1,32 +1,39 @@
 const path = require("path");
-import { defineConfig } from "vite";
+import { defineConfig, loadEnv } from "vite";
 import vue from "@vitejs/plugin-vue";
 
 // https://vitejs.dev/config/
-export default defineConfig({
-  resolve: {
-    alias: {
-      "@": path.resolve(__dirname, "src"),
-      "@scss": path.resolve(__dirname, "./src/**/*.scss"),
-    },
-  },
+export default ({ mode }) => {
+  process.env = { ...process.env, ...loadEnv(mode, process.cwd()) };
 
-  build: {
-    lib: {
-      entry: path.resolve(__dirname, "src/components/index.js"),
-      name: "PyComponents",
-      fileName: (format) => `py-lib.${format}.js`,
+  return defineConfig({
+    server: {
+      port: process.env.VITE_PORT,
     },
-    rollupOptions: {
-      external: ["vue"],
-      output: {
-        // Provide global variables to use in the UMD build
-        // Add external deps here
-        globals: {
-          vue: "Vue",
+    resolve: {
+      alias: {
+        "@": path.resolve(__dirname, "src"),
+        "@scss": path.resolve(__dirname, "./src/**/*.scss"),
+      },
+    },
+
+    build: {
+      lib: {
+        entry: path.resolve(__dirname, "src/components/index.js"),
+        name: "PyComponents",
+        fileName: (format) => `py-lib.${format}.js`,
+      },
+      rollupOptions: {
+        external: ["vue"],
+        output: {
+          // Provide global variables to use in the UMD build
+          // Add external deps here
+          globals: {
+            vue: "Vue",
+          },
         },
       },
     },
-  },
-  plugins: [vue()],
-});
+    plugins: [vue()],
+  });
+};

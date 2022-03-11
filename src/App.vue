@@ -27,8 +27,11 @@
                 
             </py-swiper-slide>
         </py-swiper> -->
+<py-header />
 
+<py-collapse></py-collapse>
   </div>
+  
 </template>
 
 <script>
@@ -41,6 +44,8 @@ import pyTextfield from "../src/components/PyTextfield/PyTextfield.vue"
 import pySelect from "../src/components/PySelect/PySelect.vue"
 import pySwiper from "../src/components/PySwiper/PySwiper.vue"
 import pySwiperSlide from "../src/components/PySwiper/PySwiperSlide.vue"
+import PyHeader from "./components/PyHeader";
+// import { PyCollapse } from "./components";
   
 
 export default {
@@ -50,7 +55,9 @@ export default {
     pyTextfield,
     pySelect,
     pySwiper,
-    pySwiperSlide
+    pySwiperSlide,
+    PyHeader,
+    // PyCollapse
   },
   data(){
     return{

@@ -1,0 +1,292 @@
+header {
+	&.header-fixed {
+		@apply fixed top-0 left-0 w-full z-40;
+	}
+
+	.pyHeader {
+		@apply max-w-screen-2xl p-4 mx-auto flex items-center gap-12 transition-all duration-200 justify-between px-4 py-5;
+
+		&.offset {
+			@apply py-2 px-4;
+		}
+
+		&__menuBtn {
+			@apply flex-1 justify-start xl:hidden;
+
+			&--text {
+				@apply inline-flex justify-center items-center gap-2;
+
+				.label {
+					@apply text-sm leading-5;
+				}
+			}
+		}
+
+		&__logo {
+			@apply flex-1 xl:flex-none text-center;
+
+			a {
+				@apply h-8 xl:h-10 w-auto flex-none inline-flex items-center justify-center;
+			}
+
+			img {
+				@apply h-full w-auto;
+			}
+		}
+
+		&__content {
+			@apply flex-1
+				fixed
+				z-50
+				w-full
+				top-0
+				left-0
+				transition-all
+				duration-300
+				ease-out
+				transform
+				-translate-x-full
+				xl:transition-none
+				xl:static
+				xl:block
+				xl:transform-none;
+
+			&.open {
+				@apply transform-none;
+			}
+
+			&--wrapper {
+				@apply w-full
+					h-screen
+					overflow-y-auto
+					flex
+					items-center
+					justify-center
+					xl:h-auto
+					xl:overflow-visible;
+			}
+
+			.nav {
+				&-close {
+					@apply absolute top-2 right-2 xl:hidden;
+				}
+
+				&-content {
+					padding: 1rem 3.75rem;
+
+					@apply w-full
+						mx-auto
+						flex
+						flex-col
+						items-center
+						justify-center
+						xl:p-0
+						xl:block;
+
+					@media screen and (min-width: 1280px) {
+						justify-content: unset;
+					}
+
+					ul {
+						@apply flex
+							flex-col
+							items-center
+							gap-4
+							xl:flex-row
+							xl:gap-8;
+					}
+				}
+
+				&-actions {
+					&:empty {
+						@apply pt-0;
+					}
+
+					@apply pt-4 xl:hidden;
+				}
+			}
+
+			.nav-link {
+				@apply relative
+					text-2xl
+					font-bold
+					leading-9
+					p-1.5
+					xl:text-lg
+					xl:font-medium
+					xl:leading-7
+					xl:py-3
+					transition-all
+					duration-200
+					inline-flex
+					items-center
+					justify-center
+					hover:opacity-50;
+
+				&.router-link-exact-active {
+					@apply opacity-50 xl:opacity-100;
+
+					.nav-link-active {
+						@apply w-full;
+					}
+				}
+			}
+		}
+
+		&__actions {
+			@apply flex-1 justify-end xl:flex-none xl:ml-auto flex items-center gap-3 xl:gap-6;
+
+			@media screen and (min-width: 1280px) {
+				justify-content: unset;
+			}
+
+			&--user {
+				@apply xl:w-auto w-12 relative flex-none;
+
+				.user-btn {
+					@apply flex items-center gap-3 relative px-2;
+
+					.avatar {
+						@apply flex-none;
+					}
+
+					span {
+						max-width: 10rem;
+						@apply w-auto text-left text-base leading-5 hidden xl:line-clamp-2;
+					}
+
+					.caret {
+						@apply transition-all duration-200 hidden xl:block;
+
+						&.toggle {
+							@apply transform rotate-180;
+						}
+					}
+				}
+			}
+
+			&--login {
+				width: 3.25rem;
+				@apply rounded-full overflow-hidden xl:w-44 xl:overflow-visible xl:rounded-none flex-none;
+
+				.login-btn {
+					@apply flex items-center justify-center;
+
+					.icon {
+						@apply xl:hidden;
+					}
+
+					.label {
+						@apply hidden xl:block text-center;
+					}
+				}
+			}
+		}
+
+		&__userMenu {
+			@apply fixed
+				right-0
+				top-0
+				transition-all
+				duration-300
+				ease-in-out
+				w-full
+				transform
+				translate-x-full
+				sm:duration-200
+				sm:absolute
+				sm:w-80
+				sm:top-full								
+				sm:transform-none
+				sm:opacity-0
+				sm:invisible
+				sm:pt-5;
+
+			&.open {
+				@apply transform-none sm:opacity-100 sm:visible sm:pt-3;
+			}
+
+			&--wrapper {
+				@apply bg-white
+					w-full
+					py-5
+					h-screen
+					relative
+					flex
+					flex-col
+					sm:block
+					sm:h-auto
+					sm:rounded-lg
+					sm:shadow-lg
+					sm:border
+					sm:border-solid
+					sm:border-gray-200;
+			}
+
+			&--header {
+				@apply pt-2.5
+					px-5
+					pb-5
+					flex-none
+					pt-0
+					md:pt-3.5
+					md:px-7
+					w-full
+					md:flex
+					md:gap-3.5;
+			}
+
+			&--content {
+				@apply flex
+					flex-col
+					flex-1
+					overflow-y-auto
+					sm:block;
+			}
+
+			.userMenu {
+				&-links {
+					@apply flex-1 py-3;
+				}
+
+				&-close {
+					@apply absolute top-2 right-2 sm:hidden;
+				}
+
+				&-signOut {
+					@apply flex-none;
+				}
+
+				&-image {
+					@apply pb-1.5 md:flex-none md:p-0;
+
+					.avatar {
+						@apply mx-auto;
+					}
+				}
+
+				&-name {
+					@apply text-center md:text-left md:flex-1;
+
+					p {
+						@apply text-base
+							font-medium
+							text-gray-900
+							line-clamp-2
+							md:leading-5;
+					}
+
+					a {
+						@apply text-gray-400
+							text-sm
+							font-normal
+							transition-all
+							duration-200
+							underline-offset-4
+							hover:underline;
+					}
+				}
+			}
+		}
+	}
+}

@@ -1,20 +1,16 @@
-import { createI18n } from 'vue-i18n'
-
 import messages from './messages'
 
-const lang = localStorage.getItem('@partyou/i18n')
+export const usePyI18n = () => {
+	const storageLang = localStorage.getItem('@partyou/i18n') || 'ptBr'
+	const currentMessages = messages[storageLang] || messages['ptBr']
 
-const i18n = createI18n({
-    locale: lang || 'ptBr',
-    fallbackLocale: 'ptBr',
-    globalInjection: true,
-    legacy: false,
-    messages
-})
+	const te = (path) => {
+		return !!currentMessages[path]
+	}
 
-export const getLangs = (t) => ([
-    { label: t('lang.ptBr'), value: 'ptBr' },
-    { label: t('lang.en'), value: 'en' }
-])
+	const t = (path, options) => {
+		return te(path) ? currentMessages[path](options) : path
+	}
 
-export default i18n
+	return { t, te }
+}

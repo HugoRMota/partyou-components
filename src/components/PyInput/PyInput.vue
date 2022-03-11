@@ -15,6 +15,7 @@
           :placeholder="placeholder"
           :class="`custom-input ${variant} ${error ? 'error' : ''}`"
           v-mask="mask ? vmask : ''"
+		  :readonly="readonly"
         ></textarea>
         <input
           v-else
@@ -27,6 +28,7 @@
           :class="`custom-input ${variant} ${error ? 'error' : ''}`"
           :placeholder="placeholder"
           v-mask="mask ? vmask : ''"
+		  :readonly="readonly"
         />
         <div class="icon" :class="{ hidden: !hasIconSlot }">
           <slot name="icon" />
@@ -113,6 +115,10 @@ export default {
       required: false,
       default: false,
     },
+	readonly: {
+			type: Boolean,
+			default: false
+		}
   },
 
   directives: {
@@ -142,7 +148,6 @@ export default {
     return {
       style,
       name: attrs.name || "",
-      error,
       vmask,
       hasIconSlot,
       viewPassword,

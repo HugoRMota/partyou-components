@@ -58,7 +58,9 @@
 
 <script>
 import { reactive, ref } from "vue";
-import { PyIcon, PyCollapse, PyCollapseContent } from "../../components";
+import PyIcon from "../PyIcon/PyIcon.vue";
+import PyCollapse from "../PyCollapse/PyCollapse.vue";
+import PyCollapseContent from "../PyCollapse/PyCollapseContent.vue";
 
 export default {
   name: "py-menu-item",
