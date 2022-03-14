@@ -20,8 +20,11 @@ export {
   PyCollapse,
   PyCollapseContent,
 };
+  
+export { default as PyHeader } from "./PyHeader";
 
 export { default as PyMenu } from "./PyMenu";
+
 export { default as PyMenuItem } from "./PyMenuItem";
 export { default as PyBadge } from "./PyBadge";
 export { default as PyDivider } from "./PyDivider";

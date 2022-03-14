@@ -1,5 +1,4 @@
 import PyHeader from "../components/PyHeader/PyHeader.vue";
-console.log("🚀 ~ file: PyHeader.stories.js ~ line 2 ~ PyHeader", PyHeader);
 
 // More on default export: https://storybook.js.org/docs/vue/writing-stories/introduction#default-export
 export default {
@@ -27,11 +26,12 @@ const Template = (args) => ({
   // And then the `args` are bound to your component with `v-bind="args"`
   template: '<py-header  v-bind="args" />',
 });
-console.log("🚀 ~ file: PyHeader.stories.js ~ line 29 ~ PyHeader", PyHeader);
 
 export const Primary = Template.bind({});
 // More on args: https://storybook.js.org/docs/vue/writing-stories/args
 Primary.args = {
+  loginColor: ["py-blue", "py-blue-light"],
+  loginTextColor: "gray-50",
   // primary: true,
   // icon: "market",
   // size: "7.5rem",

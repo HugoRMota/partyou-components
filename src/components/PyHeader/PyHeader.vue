@@ -184,14 +184,11 @@ import { computed, onBeforeUnmount, onMounted, ref, watch } from "vue";
 import { directive } from "vue3-click-away";
 import { PhSignIn, PhUser, PhCaretDown, PhSignOut } from "phosphor-vue";
 
-import {
-  PyButton,
-  PyButtonGradient,
-  PyButtonIcon,
-  PyAvatar,
-  PyDivider,
-} from "../../components";
-
+import PyDivider from "../PyDivider";
+import PyAvatar from "../PyAvatar";
+import PyButton from "../PyButton/PyButton.vue";
+import PyButtonGradient from "../PyButton/PyButtonGradient.vue";
+import PyButtonIcon from "../PyButton/PyButtonIcon.vue";
 import PyIcon from "../PyIcon/PyIcon.vue";
 import PyMenu from "../PyMenu/PyMenu.vue";
 import PyMenuItem from "../PyMenuItem/PyMenuItem.vue";
@@ -254,17 +251,23 @@ export default {
     const { t } = usePyI18n();
     const offset = ref(false);
     const isMobile = ref(window.innerWidth < 1280);
-    const partyouHome = import.meta.env?.VITE_PARTYOU_WEB_URL ? import.meta.env.VITE_PARTYOU_WEB_URL : "";
- 
+    const partyouHome = import.meta.env?.VITE_PARTYOU_WEB_URL
+      ? import.meta.env.VITE_PARTYOU_WEB_URL
+      : "";
+
     const partyouLogo = ref(props.color === "white" ? logo : logoWhite);
 
     const userBtn = ref({
       tag: props.localRoutes ? "router-link" : "a",
       props: props.localRoutes
         ? { to: { name: "/" } }
-        : { href: import.meta.env?.VITE_PARTYOU_PROFILE_URL ? import.meta.env.VITE_PARTYOU_PROFILE_URL : "" },
+        : {
+            href: import.meta.env?.VITE_PARTYOU_PROFILE_URL
+              ? import.meta.env.VITE_PARTYOU_PROFILE_URL
+              : "",
+          },
     });
- 
+
     const loginBtn = ref({
       tag: Array.isArray(props.loginColor) ? "py-button-gradient" : "py-button",
       props: {
@@ -302,7 +305,9 @@ export default {
         label: "Blog",
         tag: "a",
         props: {
-          href: import.meta.env?.VITE_BLOG_URL ? import.meta.env.VITE_BLOG_URL: "",
+          href: import.meta.env?.VITE_BLOG_URL
+            ? import.meta.env.VITE_BLOG_URL
+            : "",
           target: "_blank",
         },
       },
@@ -338,7 +343,8 @@ export default {
     const onScroll = () => (offset.value = window.scrollY > 36 && props.fixed);
     const onResize = () => (isMobile.value = window.innerWidth < 1280);
     const goToLogin = () =>
-      (window.location.href = import.meta?.env.VITE_PARTYOU_WEB_LOGIN_URL || "");
+      (window.location.href =
+        import.meta?.env.VITE_PARTYOU_WEB_LOGIN_URL || "");
     const emitSignOut = () => emit("sign-out");
 
     onScroll();
