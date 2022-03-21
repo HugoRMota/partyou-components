@@ -162,7 +162,7 @@
           <component
             :is="loginBtn.tag"
             v-bind="loginBtn.props"
-            @on-click="goToLogin"
+            @on-click="emitSignIn"
           >
             <div class="login-btn">
               <ph-sign-in :size="24" class="icon" weight="bold" />
@@ -342,10 +342,8 @@ export default {
 
     const onScroll = () => (offset.value = window.scrollY > 36 && props.fixed);
     const onResize = () => (isMobile.value = window.innerWidth < 1280);
-    const goToLogin = () =>
-      (window.location.href =
-        import.meta?.env.VITE_PARTYOU_WEB_LOGIN_URL || "");
-    const emitSignOut = () => emit("sign-out");
+ 		const emitSignIn = () => emit('sign-in')
+		const emitSignOut = () => emit('sign-out')
 
     onScroll();
     onResize();
