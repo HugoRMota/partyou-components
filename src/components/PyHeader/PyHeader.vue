@@ -209,7 +209,7 @@ import { usePyI18n } from "./../../i18n";
 export default {
   name: "py-header",
 
-  emits: ["offset", "sign-out"],
+  emits: ["offset", "sign-out", "sign-in"],
 
   directives: {
     ClickAway: directive,
