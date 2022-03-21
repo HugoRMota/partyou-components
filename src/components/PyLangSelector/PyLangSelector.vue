@@ -1,52 +1,50 @@
 <template>
-    <py-select
-        v-model="selected" 
-        elevate
-        round
-        width="160px"
-        :options="options"
-        @on-select="changeLang"
-    />
+  <py-select
+    v-model="selected"
+    elevate
+    round
+    width="160px"
+    :options="options"
+    @on-select="changeLang"
+  />
 </template>
 
 <script>
-import { ref } from 'vue'
-import PySelect from './../PySelect'
+import { ref } from "vue";
+import PySelect from "../PySelect/PySelect.vue";
 
 export default {
-    name: 'py-lang-selector',
+  name: "py-lang-selector",
 
-    props: {
-        langOptions: {
-            type: Array,
-            default: () => []
-        }
+  props: {
+    langOptions: {
+      type: Array,
+      default: () => [],
     },
+  },
 
-    components: { PySelect },
+  components: { PySelect },
 
-    setup (props) {
-        const lang = localStorage.getItem('@partyou/i18n')
-        
-        const langs = props.langOptions.map(o => o.value)
-        const selected = ref(langs.includes(lang) ? lang : 'ptBr')
+  setup(props) {
+    const lang = localStorage.getItem("@partyou/i18n");
 
-        const options = ref([...props.langOptions])
+    const langs = props.langOptions.map((o) => o.value);
+    const selected = ref(langs.includes(lang) ? lang : "ptBr");
 
-        const changeLang = ({ value }) => {
-            localStorage.setItem('@partyou/i18n', value)
-            location.reload()
-        }
+    const options = ref(props.langOptions);
 
-        return {
-            selected,
-            options,
-            changeLang
-        }
-    }
-}
+    const changeLang = ({ value }) => {
+      localStorage.setItem("@partyou/i18n", value);
+      location.reload();
+    };
+
+    return {
+      selected,
+      options,
+      changeLang,
+    };
+  },
+};
 </script>
 
-<style>
-
-</style>
+<style></style>

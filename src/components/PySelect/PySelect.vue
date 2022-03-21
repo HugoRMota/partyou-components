@@ -42,7 +42,11 @@
           `focus:ring-${focusColor} focus:border-${focusColor}`,
         ]"
       />
-      <span v-show="!search.content && toggle" class="py-select__content__input__selected">{{ labelByValue }}</span>
+      <span
+        v-show="!search.content && toggle"
+        class="py-select__content__input__selected"
+        >{{ labelByValue }}</span
+      >
       <div class="py-select__content__input__arrow">
         <slot name="icon">
           <py-icon
@@ -148,8 +152,10 @@ export default {
     const search = ref({ active: false, content: "" });
 
     const labelByValue = computed(() => {
-      const item = props.options.find((i) => i.value === props.modelValue);
-      return item.label;
+      if (props.options.some((i) => i.value === props.modelValue)) {
+        const item = props.options.find((i) => i.value === props.modelValue);
+        return item.label;
+      }
     });
 
     const listOptions = computed(() => {

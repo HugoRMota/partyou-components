@@ -81,10 +81,10 @@ module.exports = {
     builder: "webpack5",
   },
 
-  refs: {
-    design_system: {
-      title: "Design System",
-      url: "https://61e191211f1558003a757c58-cccqkewtla.chromatic.com",
-    },
-  },
+  // refs: {
+  //   design_system: {
+  //     title: "Design System",
+  //     url: "https://61e191211f1558003a757c58-cccqkewtla.chromatic.com",
+  //   },
+  // },
 };

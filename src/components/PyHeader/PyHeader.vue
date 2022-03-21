@@ -162,7 +162,7 @@
           <component
             :is="loginBtn.tag"
             v-bind="loginBtn.props"
-            @on-click="goToLogin"
+            @on-click="emitSignIn"
           >
             <div class="login-btn">
               <ph-sign-in :size="24" class="icon" weight="bold" />
