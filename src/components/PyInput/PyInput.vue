@@ -91,6 +91,11 @@ export default {
       required: false,
     },
 
+    error: {
+      type: Boolean,
+      default: false
+    },
+
     errorMessage: {
       required: false,
     },
@@ -115,11 +120,12 @@ export default {
       required: false,
       default: false,
     },
-	readonly: {
-			type: Boolean,
-			default: false
-		}
-  },
+    
+    readonly: {
+        type: Boolean,
+        default: false
+      }
+    },
 
   directives: {
     mask: {
