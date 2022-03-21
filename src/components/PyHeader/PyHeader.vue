@@ -342,8 +342,8 @@ export default {
 
     const onScroll = () => (offset.value = window.scrollY > 36 && props.fixed);
     const onResize = () => (isMobile.value = window.innerWidth < 1280);
- 		const emitSignIn = () => emit('sign-in')
-		const emitSignOut = () => emit('sign-out')
+    const goToLogin = () => emit("sign-in");
+    const emitSignOut = () => emit("sign-out");
 
     onScroll();
     onResize();
