@@ -342,9 +342,7 @@ export default {
 
     const onScroll = () => (offset.value = window.scrollY > 36 && props.fixed);
     const onResize = () => (isMobile.value = window.innerWidth < 1280);
-    const goToLogin = () =>
-      (window.location.href =
-        import.meta?.env.VITE_PARTYOU_WEB_LOGIN_URL || "");
+    const goToLogin = () => emit("sign-in");
     const emitSignOut = () => emit("sign-out");
 
     onScroll();
