@@ -4,6 +4,7 @@
     elevate
     round
     width="160px"
+    border-color="transparent"
     :options="options"
     @on-select="changeLang"
   />
