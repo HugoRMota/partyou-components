@@ -66,7 +66,7 @@
 					</span>
 					{{ option.label }}
 				</li>
-				<li class="py-select__options--empty" v-if="filteredOptions.length === 0">Nenhuma opção encontrada</li>
+				<li class="py-select__options--empty" v-if="filteredOptions.length === 0">{{ noOptions }}</li>
 			</ul>
 		</div>
 	</div>
@@ -75,6 +75,7 @@
 <script>
 import { computed, nextTick, ref, watch } from 'vue'
 import { directive } from 'vue3-click-away'
+import { usePyI18n } from '@/i18n'
 
 import PyIcon from "../PyIcon/PyIcon.vue";
 
@@ -111,10 +112,13 @@ export default {
 
 		overlayColor: { type: String, required: false },
 		borderColor: { type: String, default: 'black'},
-		borderRadius: { type: String, default: 'md' }
+		borderRadius: { type: String, default: 'md' },
+		noOptionsMessage: { type: String, required: false }
 	},
 
 	setup(props, { emit }) {
+		const { t } = usePyI18n()
+
 		const pySelect = ref(null)
 		const searchInput = ref(null)
 		const toggle = ref(false)
@@ -133,6 +137,8 @@ export default {
 		})
 
 		const disabled = computed(() => props.searchable ? !toggle.value : true)
+
+		const noOptions = computed(() => props.noOptionsMessage || t('noOptions'))
 
 		const selectValue = (v) => {
 			toggle.value = false
@@ -207,7 +213,8 @@ export default {
 			filteredOptions,
 			search,
 			disabled,
-			searchInput
+			searchInput,
+			noOptions
 		}
 	},
 }
