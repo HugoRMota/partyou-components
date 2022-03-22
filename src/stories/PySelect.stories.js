@@ -1,3 +1,4 @@
+import { ref } from "vue";
 import PySelect from "../components/PySelect/PySelect.vue";
  
  export default {
@@ -20,17 +21,19 @@ const Template = (args) => ({
   components: { PySelect },
   // The story's `args` need to be mapped into the template through the `setup()` method
   setup() {
-    return { args };
+    const defaultValue = ref(1)
+
+    return { args, defaultValue };
   },
   // And then the `args` are bound to your component with `v-bind="args"`
-  template: '<py-select v-bind="args" />',
+  template: '<py-select v-bind="args" v-model="defaultValue" />',
 });
 
 export const Primary = Template.bind({});
 // More on args: https://storybook.js.org/docs/vue/writing-stories/args
 Primary.args = { 
   label: 'Selecionar',
-  modelValue:1,
+  searchable: false,
   options: [
     { label: "1", value: 1 },
     { label: "2", value: 2 },

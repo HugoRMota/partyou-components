@@ -18,4 +18,5 @@ export default {
 	login: () => 'Entrar/Cadastre-se',
 	logout: () => 'Sair',
 	myAccount: () => 'Minha Conta',
+	noOptions: () => 'Nenhuma opção encontrada'
 }
