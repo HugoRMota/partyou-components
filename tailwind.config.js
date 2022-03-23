@@ -6,7 +6,7 @@ module.exports = {
   safelist: [
     {
       pattern: /(text|bg|from|to|font|shadow|border)-/,
-      variants: ["lg", "hover", "focus", "lg:hover"],
+      variants: ["lg", "hover", "focus", "lg:hover", "before"],
     },
   ],
 

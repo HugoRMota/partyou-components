@@ -6,8 +6,6 @@
     class="py-btn"
     v-bind="tag.args"
   >
-    <!-- <span class="overlay" :class="`bg-${overlayColor}`"></span> -->
-
     <slot>
       <span class="label">{{ label }}</span>
     </slot>
@@ -39,21 +37,21 @@ export default {
   },
 
   setup(props, { attrs, emit }) {
-    let tag = {};
-
-    if (props.to) {
-      tag.type = "router-link";
-      tag.args = { to: props.to };
-    } else if (props.href) {
-      tag.type = "a";
-      tag.args = { href: props.href, target: "_blank" };
-    } else {
-      tag.type = "button";
-      tag.args = {
+    const tag = ref({
+      type: 'button',
+      args: {
         type: props.type,
         disabled: props.disabled,
-        onClick: () => emit("on-click"),
-      };
+        onClick: () => emit("on-click")
+      }
+    });
+
+    if (props.to) {
+      tag.value.type = "router-link";
+      tag.value.args = { to: props.to };
+    } else if (props.href) {
+      tag.value.type = "a";
+      tag.value.args = { href: props.href, target: "_blank" };
     }
 
     const setStyles = () => ({
@@ -70,7 +68,8 @@ export default {
         typeof props.fontSize === "string" ? props.fontSize : "",
         `text-${props.textColor}`,
         `font-${props.weight}`,
-        `hover:text-${props.hoverTextColor || props.textColor}`
+        `hover:text-${props.hoverTextColor || props.textColor}`,
+        `before:bg-${props.overlayColor}`
       );
 
       switch (props.direction) {
@@ -114,21 +113,18 @@ export default {
         classes.push(`from-${props.colors[0]}`, `to-${props.colors[0]}`);
       } else {
         const gradient = [];
-        const hoverGradient = [];
 
         props.colors.forEach((color, index) => {
           if (index === 0) {
             gradient.push(`from-${color}`);
-            hoverGradient.push(`hover:to-${color}`);
           } else if (index === props.colors.length - 1) {
             gradient.push(`to-${color}`);
-            hoverGradient.push(`hover:from-${color}`);
           } else {
             gradient.push(`via-${color}`);
           }
         });
 
-        classes.push(...gradient, ...hoverGradient);
+        classes.push(...gradient);
       }
 
       return classes;

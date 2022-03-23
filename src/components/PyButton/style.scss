@@ -10,8 +10,19 @@
         transition
         duration-200
         ease-in-out        
-        focus:outline-none      
-        focus:shadow-none;
+        focus:outline-none
+        focus:shadow-none
+        before:content-['']
+        before:absolute
+        before:top-0
+        before:left-0
+        before:w-full
+        before:h-full
+        before:opacity-0
+        before:invisible
+        before:transition-all
+        before:duration-200
+        hover:before:visible;
  
     .overlay {
         @apply
@@ -26,11 +37,7 @@
     }
     
     &:disabled {
-        @apply cursor-not-allowed;
-
-        .overlay {
-            @apply opacity-40;
-        }
+        @apply cursor-not-allowed before:opacity-60 before:visible;
 
         .icon, .label {
             @apply static;
@@ -38,8 +45,6 @@
     }
 
     &:hover:not(:disabled) {
-        .overlay {
-            @apply opacity-30;
-        }
+        @apply before:opacity-30;
     }
 }

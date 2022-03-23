@@ -6,7 +6,6 @@
         :style="style"
         class="py-btn"
     >
-        <span class="overlay" :class="`bg-${overlayColor}`"></span>
         <py-icon 
             :key="iconKey"
             :name="icon"
@@ -20,7 +19,6 @@
         :style="style"
         class="py-btn"
     >
-        <span class="overlay" :class="`bg-${overlayColor}`"></span>
         <py-icon 
             :key="iconKey"
             :name="icon"
@@ -36,7 +34,6 @@
         @click="onClick"
         :disabled="disabled"
     >
-        <span class="overlay" :class="`bg-${overlayColor}`"></span>
         <py-icon 
             :key="iconKey"
             :name="icon"
@@ -81,7 +78,8 @@ export default {
             `bg-${props.color}`, 
             'rounded-full', 
             `text-${props.iconColor}`,
-            `hover:text-${props.hoverIconColor || props.iconColor}`
+            `hover:text-${props.hoverIconColor || props.iconColor}`,
+            `before:bg-${props.overlayColor}`
         ]
 
         const classes = ref(setClasses())
