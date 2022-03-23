@@ -37,22 +37,30 @@ export default {
   },
 
   setup(props, { attrs, emit }) {
-    const tag = ref({
-      type: 'button',
-      args: {
-        type: props.type,
-        disabled: props.disabled,
-        onClick: () => emit("on-click")
+    const tag = computed(() => {
+      const btnProps = {
+        type: '',
+        args: {}
       }
-    });
 
-    if (props.to) {
-      tag.value.type = "router-link";
-      tag.value.args = { to: props.to };
-    } else if (props.href) {
-      tag.value.type = "a";
-      tag.value.args = { href: props.href, target: "_blank" };
-    }
+      if (props.to) {
+        btnProps.type = "router-link";
+        btnProps.args = { to: props.to };
+      } else if (props.href) {
+        btnProps.type = "a";
+        btnProps.args = { href: props.href, target: "_blank" };
+      } else {        
+        btnProps.type ='button',
+        btnProps.args = {
+          type: props.type,
+          onClick: () => emit("on-click")
+        }
+      }
+
+      btnProps.args.disabled = props.disabled
+
+      return btnProps
+    });
 
     const setStyles = () => ({
       width: props.fullWidth ? "100%" : `${props.width}px`,
