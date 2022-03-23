@@ -6,8 +6,6 @@
     class="py-btn"
     v-bind="tag.args"
   >
-    <!-- <span class="overlay" :class="`bg-${overlayColor}`"></span> -->
-
     <slot>
       <span class="label">{{ label }}</span>
     </slot>
@@ -15,7 +13,7 @@
 </template>
 
 <script>
-import { computed, watch, ref} from "vue";
+import { computed, watch, ref } from "vue";
 
 export default {
   name: "py-button",
@@ -93,22 +91,22 @@ export default {
     },
   },
 
-  setup(props, { attrs, emit }) {
-    let tag = {};
-
-    if (props.to) {
-      tag.type = "router-link";
-      tag.args = { to: props.to };
-    } else if (props.href) {
-      tag.type = "a";
-      tag.args = { href: props.href, target: "_blank" };
-    } else {
-      tag.type = "button";
-      tag.args = {
+  setup(props, { emit }) {
+    const tag = ref({
+      type: 'button',
+      args: {
         type: props.type,
         disabled: props.disabled,
-        onClick: () => emit("on-click"),
-      };
+        onClick: () => emit("on-click")
+      }
+    });
+
+    if (props.to) {
+      tag.value.type = "router-link";
+      tag.value.args = { to: props.to };
+    } else if (props.href) {
+      tag.value.type = "a";
+      tag.value.args = { href: props.href, target: "_blank" };
     }
 
     const setStyles = () => ({
@@ -124,7 +122,7 @@ export default {
       `bg-${props.color}`,
       `font-${props.weight}`,
       `hover:text-${props.hoverTextColor || props.textColor}`,
-      `hover:bg-${hoverColor(props.color)}`,
+      `before:bg-${props.overlayColor}`,
     ];
 
     function hoverColor(hex) {
