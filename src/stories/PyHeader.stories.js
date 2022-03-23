@@ -1,4 +1,5 @@
 import PyHeader from "../components/PyHeader/PyHeader.vue";
+import vueRouter from "storybook-vue3-router";
 
 // More on default export: https://storybook.js.org/docs/vue/writing-stories/introduction#default-export
 export default {
@@ -40,6 +41,8 @@ Primary.args = {
   // iconSize: "48",
   // fontColor: "gray-500",
 };
+
+Primary.decorators = [vueRouter()];
 
 // export const Secondary = Template.bind({});
 // Secondary.args = {

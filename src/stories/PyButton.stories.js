@@ -1,6 +1,7 @@
 import PyButton from "../components/PyButton/PyButton.vue";
 import PyButtonGradient from "../components/PyButton/PyButtonGradient.vue";
 import PyButtonIcon from "../components/PyButton/PyButtonIcon.vue";
+import vueRouter from "storybook-vue3-router";
 
 import { withDesign } from "storybook-addon-designs";
 
@@ -59,17 +60,23 @@ Solid.args = {
   color: "blue-600",
 };
 
+Solid.decorators = [vueRouter()];
+
 Gradient.args = {
   // primary: true,
   label: "Click aqui",
   colors: ["py-blue", "py-blue-light"],
 };
 
+Gradient.decorators = [vueRouter()];
+
 Icon.args = {
   // primary: true,
   color: "blue-600",
   icon: "close",
 };
+
+Icon.decorators = [vueRouter()];
 
 Solid.parameters = {
   design: {
