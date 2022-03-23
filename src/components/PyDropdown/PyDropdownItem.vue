@@ -2,7 +2,8 @@
 	<router-link 
 		v-if="to"
 		:to="to"
-		:class="[`hover:text-${color}`, routeIsActive ? `text-${color}` : `text-${textColor}`]"
+        v-slot="{ isActive, isExactActive }"
+		:class="[`hover:text-${color}`, isActive && isExactActive ? `text-${color}` : `text-${textColor}`]"
         class="pyDropdownItem"
 	>
         <span class="overlay" :class="`bg-${color}`"></span>
@@ -39,9 +40,6 @@
 </template>
 
 <script>
-import { computed } from 'vue'
-import { useRoute } from 'vue-router'
-
 export default {
     name: 'py-dropdown-item',
     
@@ -69,24 +67,10 @@ export default {
 
     setup (_, { attrs, emit }) {
         const { to, href } = attrs
-        const route = useRoute()
-
-        const routeIsActive = computed(() => {
-            if (!to) {
-                return false
-            }
-
-            if (typeof to === 'object') {
-                return to.name === route.name
-            }
-
-            return route.fullPath === to
-        })
 
         return {
             to, 
             href,
-            routeIsActive,
             emitClick: () => emit('on-click')
         }
     }
