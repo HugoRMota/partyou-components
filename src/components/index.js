@@ -44,3 +44,5 @@ export { default as PySpinner } from "./PySpinner";
 
 export * from "../validation/validation-builder";
 export * from "../validation/validation-composite";
+
+export { default as usePyHeader } from './PyHeader/composables'
