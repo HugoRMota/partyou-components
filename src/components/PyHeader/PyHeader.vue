@@ -197,14 +197,7 @@ import PyMenuItem from "../PyMenuItem/PyMenuItem.vue";
 import logoWhite from "./../../assets/images/partyou-logo-white.svg";
 import logo from "./../../assets/images/partyou-logo.svg";
 
-import {
-  openSidenav,
-  closeSidenav,
-  sidenav,
-  toggleUserMenu,
-  closeUserMenu,
-  userMenu,
-} from "./composables";
+import usePyHeader from "./composables";
 
 import { usePyI18n } from "./../../i18n";
 
@@ -250,6 +243,15 @@ export default {
   },
 
   setup(props, { emit }) {
+    const {
+      userMenu,
+      sidenav,
+      openSidenav,
+      closeSidenav,
+      toggleUserMenu,
+      closeUserMenu,
+    } = usePyHeader();
+    
     const { t } = usePyI18n();
     const offset = ref(false);
     const isMobile = ref(window.innerWidth < 1280);
