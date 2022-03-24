@@ -3,7 +3,7 @@
     <pyInput label="Name" optional="*" />
     <pyButton color="green-500" label="Button" />
     <pyTextfield label="Name" />
-    <pySelect
+    <!-- <pySelect
       @update:modelValue="selected = $event"
       label="Gender"
       :modelValue="selected"
@@ -21,7 +21,7 @@
           value: 3,
         },
       ]"
-    />
+    /> -->
     <!-- 
   <py-swiper
              :slides-per-view="2"
@@ -36,7 +36,7 @@
 
     <py-collapse></py-collapse>
 
-    <py-lang-selector
+    <!-- <py-lang-selector
       :langOptions="[
         {
           label: '1',
@@ -51,7 +51,7 @@
           value: 3,
         },
       ]"
-    />
+    /> -->
   </div>
 </template>
 
@@ -62,11 +62,11 @@ import * as item from "./components/index";
 import pyInput from "../src/components/PyInput/PyInput.vue";
 import pyButton from "../src/components/PyButton/PyButton.vue";
 import pyTextfield from "../src/components/PyTextfield/PyTextfield.vue";
-import pySelect from "../src/components/PySelect/PySelect.vue";
+// import pySelect from "../src/components/PySelect/PySelect.vue";
 import pySwiper from "../src/components/PySwiper/PySwiper.vue";
 import pySwiperSlide from "../src/components/PySwiper/PySwiperSlide.vue";
 import PyHeader from "./components/PyHeader";
-import PyLangSelector from "./components/PyLangSelector/PyLangSelector.vue";
+// import PyLangSelector from "./components/PyLangSelector/PyLangSelector.vue";
 // import { PyCollapse } from "./components";
 
 export default {
@@ -74,11 +74,11 @@ export default {
     pyButton,
     pyInput,
     pyTextfield,
-    pySelect,
+    // pySelect,
     pySwiper,
     pySwiperSlide,
     PyHeader,
-    PyLangSelector,
+    // PyLangSelector,
     // PyCollapse
   },
   data() {
