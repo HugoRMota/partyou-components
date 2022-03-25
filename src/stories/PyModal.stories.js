@@ -1,11 +1,12 @@
 import { ref } from "vue";
 import PyModal from "../components/PyModal/PyModal.vue";
 import PyButton from "../components/PyButton/PyButton.vue";
-
+ 
 // More on default export: https://storybook.js.org/docs/vue/writing-stories/introduction#default-export
 export default {
   title: "Example/PyModal",
   component: PyModal,
+ 
   // More on argTypes: https://storybook.js.org/docs/vue/api/argtypes
   argTypes: {
     //   backgroundColor: { control: 'color' },

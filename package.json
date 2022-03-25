@@ -1,6 +1,6 @@
 {
   "name": "partyou-components-v2",
-  "version": "1.0.18",
+  "version": "1.0.19",
   "files": [
     "dist"
   ],
@@ -24,6 +24,7 @@
     "style": "tailwindcss build src/assets/main.css -o src/assets/tailwind.css"
   },
   "dependencies": {
+    "@storybook/addon-info": "^5.3.21",
     "@tailwindcss/line-clamp": "^0.3.1",
     "date-fns": "^2.28.0",
     "phosphor-vue": "^4.4.0",

@@ -1,0 +1,32 @@
+.notification {
+  @apply flex items-center rounded-md  p-4;
+
+  &-icon {
+    @apply flex;
+
+    &-content {
+      @apply flex-shrink-0;
+    }
+  }
+  &-text {
+    @apply ml-3;
+
+    p {
+      @apply text-base font-medium;
+    }
+    &-list {
+      @apply mt-2 text-sm;
+
+      ul {
+        @apply list-disc pl-5 space-y-1;
+      }
+    }
+  }
+  &-button {
+    @apply ml-auto pl-3;
+
+    &-content {
+      @apply mx-1.5 -my-1.5;
+    }
+  }
+}
