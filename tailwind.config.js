@@ -36,9 +36,10 @@ module.exports = {
         "py-blue": {
           light: "#00DCFF",
           DEFAULT: "#27C2FF",
+          toogle: "#93E0FF",
         },
       },
     },
   },
-  plugins: [require("@tailwindcss/line-clamp")],
+  plugins: [require("@tailwindcss/line-clamp"), require("@tailwindcss/forms")],
 };
