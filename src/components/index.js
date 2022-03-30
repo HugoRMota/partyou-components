@@ -20,7 +20,9 @@ export {
   PyCollapse,
   PyCollapseContent,
 };
-  
+
+export { default as PyToogle } from "./PyToogle";
+
 export { default as PyHeader } from "./PyHeader";
 
 export { default as PyMenu } from "./PyMenu";
@@ -45,4 +47,4 @@ export { default as PySpinner } from "./PySpinner";
 export * from "../validation/validation-builder";
 export * from "../validation/validation-composite";
 
-export { default as usePyHeader } from './PyHeader/composables'
+export { default as usePyHeader } from "./PyHeader/composables";
